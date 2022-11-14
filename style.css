@@ -12,9 +12,9 @@ table td{
   padding: 5px 10px;
   border: 1px solid #ccc;
 }
-table td:last-child{
+/* table td:last-child{
   text-align: right;
-}
+} */
 a{
   display: inline-block;
   padding: 5px 10px;

@@ -14,7 +14,7 @@
   $pdo= new PDO($dsn,'root','');
   //固定語法 new PDO(  ,'帳號(預設為root)'.'密碼');
 
-  $sql="SELECT * FROM `students` LIMIT 5";
+  $sql="SELECT * FROM `students` LIMIT 10";
   // $result=mysqli_query($db,$sql);
   // $rows= mysqli_fetch_all($result);
 
@@ -53,8 +53,8 @@
     echo "<td>{$row['graduate_at']}</td>";
     echo "<td>{$age}</td>";
     echo "<td>";
-    echo "<a href='edit.php'?id={$row}>編輯</a>";
-    echo "<a href='del.php'?id={$row}>刪除</a>";
+    echo "<a href='edit.php'?id={$row['id']}>編輯</a>";
+    echo "<a href='del.php'?id={$row['id']}>刪除</a>";
     echo "</td>";
     echo "</tr>";
   }
