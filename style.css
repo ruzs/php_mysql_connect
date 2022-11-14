@@ -15,3 +15,11 @@ table td{
 table td:last-child{
   text-align: right;
 }
+a{
+  display: inline-block;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
+}
