@@ -6,27 +6,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>學生管理系統</title>
   <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>學生管理系統</h1>
   <?php
-  // $dsn="mysql:host=localhost;charset=utf8;dbname=school";
-  $db=mysqli_connect('localhost','root','','school');
-  mysqli_set_charset($db,'utf8');
+  $dsn="mysql:host=localhost;charset=utf8;dbname=school";
+  // $db=mysqli_connect('localhost','root','','school');
+  // mysqli_set_charset($db,'utf8');
 
-  // $pdo= new PDO($dsn,'root','');
+  $pdo= new PDO($dsn,'root','');
   //固定語法 new PDO(  ,'帳號(預設為root)'.'密碼');
 
   $sql="SELECT * FROM `students` LIMIT 5";
-  $result=mysqli_query($db,$sql);
-  $rows= mysqli_fetch_all($result);
+  // $result=mysqli_query($db,$sql);
+  // $rows= mysqli_fetch_all($result);
 
-  // $rows=$pdo ->query($sql)->fetchAll(PDO::FETCH_NAMED);
+  $rows=$pdo ->query($sql)->fetchAll(PDO::FETCH_ASSOC);
   //query() 查詢 fetch調資料 All為全部   (FETCH_NAMED ASSOC)
 
-  echo "<pre>";
-  print_r($rows);
-  echo "</pre>";
+  // echo "<pre>";
+  // print_r($rows);
+  // echo "</pre>";
   ?>
+</head>
+<body>
+  <h1>學生管理系統</h1>\
+  <table class='list-students'>
+    <tr>
+      <td>學號</td>
+      <td>姓名</td>
+      <td>生日</td>
+      <td>畢業國中代碼</td>
+      <td>年齡</td>
+    </tr>
+  <?php
+  foreach ($rows as $row) {
+    $age=round((strtotime('now')-strtotime($row['birthday']))/(60*60*24*365),1);
+    echo "<tr>";
+    echo "<td>{$row['school_num']}</td>";
+    echo "<td>{$row['name']}</td>";
+    echo "<td>{$row['birthday']}</td>";
+    echo "<td>{$row['graduate_at']}</td>";
+    echo "<td>{$age}</td>";
+    echo "</tr>";
+  }
+  ?>
+  </table>
 </body>
 </html>
