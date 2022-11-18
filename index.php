@@ -68,7 +68,8 @@
     echo "<td>{$age}</td>";
     echo "<td>";
     echo "<a href='edit.php?id={$row['id']}'>編輯</a>";
-    echo "<a href='del.php?id={$row['id']}'>刪除</a>";
+    echo "<a href='./api/del_student.php?id={$row['id']}'>刪除</a>";
+    //echo "<a href='del.php?id={$row['id']}'>刪除</a>";
     echo "</td>";
     echo "</tr>";
   }

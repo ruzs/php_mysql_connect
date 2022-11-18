@@ -108,7 +108,7 @@ $pdo=new PDO($dsn,'root','');
       <tr>
         <td>班級</td>
         <td>
-          <select name="class_code" onchange="upadte.php">
+          <select name="class_code">
             <?php
             $stu_class=$pdo->query("SELECT * FROM `class_student` WHERE `school_num`='{$student['school_num']}'")->fetch(PDO::FETCH_ASSOC);
             //從`classes`資料表中撈出所有的班級資料並在網頁上製作成下拉選單的項目
