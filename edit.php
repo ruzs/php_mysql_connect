@@ -52,18 +52,25 @@ $pdo = new PDO($dsn, 'root', '');
       </tr>
       <tr>
         <td>tel</td>
-        <td><input type="text" name="tel" value="<?= $student['tel~']; ?>"></td>
+        <td><input type="text" name="tel" value="<?= $student['tel']; ?>"></td>
       </tr>
       <tr>
         <td>dept</td>
         <td>
+          <?=$student['dept'];?>
           <select name="dept">
             <?php
             //從`dept`資料表中撈出所有的科系資料並在網頁上製作成下拉選單的項目
             $sql = "SELECT * FROM `dept`";
             $depts = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
             foreach ($depts as $dept) {
-              echo "<option value='{$dept['id']}'>{$dept['name']}</option>";
+              /* if($dept['id']==$student['dept']){
+                  $selected='selected';
+              }else{
+                  $selected='';
+              } */
+              $selected=($dept['id']==$student['dept'])?'selected':'';
+              echo "<option value='{$dept['id']}' $selected>{$dept['name']}</option>";
             }
             ?>
           </select>
