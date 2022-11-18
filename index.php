@@ -30,10 +30,21 @@
   <h1>學生管理系統</h1>
   <nav>
     <a href="add.php">新增學生</a>
-    <a href="login.php">教師登入</a>
     <a href="reg.php">教師註冊</a>
+    <a href="login.php">教師登入</a>
   </nav>
-
+  <?php
+    if(isset($_GET['status'])){
+      switch($_GET['status']){
+        case 'add_success':
+          echo "<span style='color:green'>新增學生成功</span>";
+        break;
+        case 'add_fail';
+          echo "<span style='color:red'>新增學生有誤</span>";
+        break;
+      }
+    }
+  ?>
   <table class='list-students'>
     <tr>
       <td>學號</td>

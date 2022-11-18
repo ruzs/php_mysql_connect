@@ -16,7 +16,9 @@ $status_code=$_POST['status_code'];
 $class_code=$_POST['class_code'];
 $year=2000;
 
-$seat_num=$pdo->query("SELECT max(`seat_num`) from `class_student` WHERE `class_code`='$class_code'")->fetchColumn()+1;
+$max_num=$pdo->query("SELECT max(`seat_num`) from `class_student` WHERE `class_code`='$class_code'")->fetchColumn();
+$seat_num=$max_num+1;
+//$seat_num=$pdo->query("SELECT max(`seat_num`) from `class_student` WHERE `class_code`='$class_code'")->fetchColumn()+1;
 
 $sql="INSERT INTO `students` 
 (`id`, `school_num`, `name`, 
@@ -32,7 +34,13 @@ $sql_class="INSERT INTO `class_student`(`school_num`,`class_code`,`seat_num`,`ye
 echo $sql;
 echo $sql_class;
 //$pdo->query($sql);
-$res=$pdo->exec($sql);
-$res=$pdo->exec($sql_class);
-echo "新增成功:".$res;
+$res1=$pdo->exec($sql);
+$res2=$pdo->exec($sql_class);
+//echo "新增成功:".$res1;
+if($res1 && $res2){
+  $status='add_success';
+}else{
+  $status='add_fail';
+}
+header("location:../index.php?status=$status");
 ?>
