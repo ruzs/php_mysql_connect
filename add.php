@@ -17,7 +17,26 @@ $pdo=new PDO($dsn,'root','');
     <table>
       <tr>
         <td>school_num</td>
-        <td><input type="text" name="school_num"></td>
+        <!-- <td><input type="text" name="school_num"></td> -->
+        <?php
+          $sql="SELECT max(`school_num`) FROM `students`";
+          $max=$pdo->query($sql)->fetchColumn();
+
+          // $rows=$pdo->query($sql)->fetchAll();
+          // $row=$pdo->query($sql)->fetch();
+          // echo "<pre>";
+          // echo "fetchColumn";
+          // echo "<hr>";
+          // print_r($max);
+          // echo "fetchAll";
+          // echo "<hr>";
+          // print_r($rows);
+          // echo "fetch";
+          // echo "<hr>";
+          // print_r($row);
+          // echo "</pre>";
+          ?>
+        <td><input type="text" name="school_num" value="<?=$max+1;?>"></td>
       </tr>
       <tr>
         <td>name</td>
@@ -88,20 +107,16 @@ $pdo=new PDO($dsn,'root','');
       <tr>
         <td>班級</td>
         <td>
-          <select name="classes">
-            <?php
-              $sql="SELECT `id`,`name` FROM `classes`";
-              $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-              foreach($rows as $row){
-                echo "<option value='{$row['id']}'>{$row['name']}</option>";
-              }
+          <select name="class_code" onchange="upadte.php">
+            <?php 
+            $sql="SELECT `id`,`code`,`name` FROM `classes`";
+            $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+            foreach($rows as $row){
+                echo "<option value='{$row['code']}'>{$row['name']}</option>";
+            }
             ?>
           </select>
         </td>
-      </tr>
-      <tr>
-        <td>座號</td>
-        <td><input type="text" name="seat_num"></td>
       </tr>
     </table>
     <input type="submit" value="確認新增">
