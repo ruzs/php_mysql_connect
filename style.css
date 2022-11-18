@@ -23,3 +23,22 @@ a{
 a:hover{
   text-decoration: underline;
 }
+.class-list{
+  display: flex; 
+  list-style-type: none;
+  margin:5px 0;
+}
+nav ul.class-list li a{
+  padding:5px 12px;
+  margin:0 2px;
+  border-radius:5px;
+  background-color: lightskyblue;
+  box-shadow: 2px 2px 3px skyblue;
+  text-decoration: none;
+}
+.class-list li a:hover{
+  background-color: blue;
+  color:white;
+  font-weight: bolder;
+  text-decoration: underline;
+}
