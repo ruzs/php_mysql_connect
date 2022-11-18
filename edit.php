@@ -1,19 +1,16 @@
 <?php
-
-//使用PDO方式建立資料庫連線物件
-$dsn = "mysql:host=localhost;charset=utf8;dbname=school";
-$pdo = new PDO($dsn, 'root', '');
+$dsn="mysql:host=localhost;charset=utf8;dbname=school";
+$pdo=new PDO($dsn,'root','');
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>編輯學生資料</title>
 </head>
-
 <body>
   <h1>編輯學生資料</h1>
   <?php
@@ -24,11 +21,11 @@ $pdo = new PDO($dsn, 'root', '');
     header("location:index.php?status=edit_error");
   }
   ?>
-  <form action="api/add_student.php" method="post">
+  <form action="api/edit_student.php" method="post">
     <table>
       <tr>
         <td>school_num</td>
-        <td><?= $student['school_num']; ?></td>
+        <td><?=$student['school_num'];?></td>
       </tr>
       <tr>
         <td>name</td>
@@ -52,7 +49,7 @@ $pdo = new PDO($dsn, 'root', '');
       </tr>
       <tr>
         <td>tel</td>
-        <td><input type="text" name="tel" value="<?= $student['tel']; ?>"></td>
+        <td><input type="text" name="tel" value="<?=$student['tel'];?>"></td>
       </tr>
       <tr>
         <td>dept</td>
@@ -85,7 +82,8 @@ $pdo = new PDO($dsn, 'root', '');
             $sql = "SELECT * FROM `graduate_school`";
             $grads = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
             foreach ($grads as $grad) {
-              echo "<option value='{$grad['id']}'>{$grad['county']}{$grad['name']}</option>";
+              $selected=($grad['id']==$student['graduate_at'])?'selected':'';
+              echo "<option value='{$grad['id']}' $selected>{$grad['county']}{$grad['name']}</option>";
             }
             ?>
           </select>
@@ -100,7 +98,8 @@ $pdo = new PDO($dsn, 'root', '');
             $sql = "SELECT * FROM `status`";
             $rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
             foreach ($rows as $row) {
-              echo "<option value='{$row['code']}'>{$row['status']}</option>";
+              $selected=($row['code']==$student['status_code'])?'selected':'';
+              echo "<option value='{$row['code']}' $selected>{$row['status']}</option>";
             }
             ?>
           </select>
@@ -111,18 +110,25 @@ $pdo = new PDO($dsn, 'root', '');
         <td>
           <select name="class_code" onchange="upadte.php">
             <?php
+            $stu_class=$pdo->query("SELECT * FROM `class_student` WHERE `school_num`='{$student['school_num']}'")->fetch(PDO::FETCH_ASSOC);
             //從`classes`資料表中撈出所有的班級資料並在網頁上製作成下拉選單的項目
             $sql = "SELECT `id`,`code`,`name` FROM `classes`";
             $rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
             foreach ($rows as $row) {
-              echo "<option value='{$row['code']}'>{$row['name']}</option>";
+              $selected=($row['code']==$stu_class['class_code'])?'selected':'';
+              echo "<option value='{$row['code']}' $selected>{$row['name']}</option>";
             }
             ?>
           </select>
         </td>
       </tr>
+      <tr>
+            <td>座號</td>
+            <td><?=$stu_class['seat_num'];?></td>
+      </tr>
     </table>
-    <input type="submit" value="確認新增">
+    <input type="hidden" name="id" value="<?=$student['id'];?>">
+    <input type="submit" value="確認修改">
   </form>
 </body>
 

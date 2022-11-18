@@ -2,6 +2,10 @@
 $dsn="mysql:host=localhost;charset=utf8;dbname=school";
 $pdo=new PDO($dsn,'root','');
 
+echo "<pre>";
+print_r($_POST);
+echo "</pre>";
+
 $sql="UPDATE `students` SET `name`='丁于穎',`birthday`='1988-07-14' WHERE `id`='1'";
 
 //$pdo->query($sql);
