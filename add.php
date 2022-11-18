@@ -79,16 +79,25 @@ $pdo=new PDO($dsn,'root','');
               $sql="SELECT * FROM `status`";
               $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
               foreach($rows as $row){
-                echo "<option value='{$row['id']}'>{$row['status']}</option>";
+                echo "<option value='{$row['code']}'>{$row['status']}</option>";
               }
             ?>
           </select>
-          
         </td>
       </tr>
       <tr>
         <td>班級</td>
-        <td><input type="text" name="classes"></td>
+        <td>
+          <select name="classes">
+            <?php
+              $sql="SELECT `id`,`name` FROM `classes`";
+              $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+              foreach($rows as $row){
+                echo "<option value='{$row['id']}'>{$row['name']}</option>";
+              }
+            ?>
+          </select>
+        </td>
       </tr>
       <tr>
         <td>座號</td>
