@@ -15,6 +15,9 @@ $student=$pdo->query("SELECT * FROM `students` where `id`='{$_GET['id']}'")
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>刪除確認</title>
     <style>
+        *{
+            text-align: center;
+        }
         body{
             display: flex;
             height:95vh;
