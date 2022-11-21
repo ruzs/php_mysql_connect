@@ -66,10 +66,19 @@
   ?>
 </head>
 <body>
+<?php 
+if(isset($_GET['del'])){
+    $name=$pdo->query("SELECT `name` from `students` WHERE `id`='{$_GET['del']}'")
+              ->fetchColumn();
+    echo "<div class='del-msg'>";
+    echo "$name 資料已刪除!!";
+    echo "</div>";
+}
+?>
   <!-- <pre>
   <?php //print_r($rows);?> ;
 </pre> -->
-  <h1>學生管理系統</h1>
+  <h1 style="text-align:center">學生管理系統</h1>
   <nav>
     <a href="add.php">新增學生</a>
     <a href="reg.php">教師註冊</a>
@@ -243,19 +252,13 @@
     echo "<td>{$age}</td>";
     echo "<td>";
     echo "<a href='edit.php?id={$row['id']}'>編輯</a>";
-    echo "<a href='./api/del_student.php?id={$row['id']}'>刪除</a>";
+    //echo "<a href='./api/del_student.php?id={$row['id']}'>刪除</a>";
+    echo "<a href='./confirm_del.php?id={$row['id']}'>刪除</a>";
     //echo "<a href='del.php?id={$row['id']}'>刪除</a>";
     echo "</td>";
     echo "</tr>";
   }
   ?>
   </table>
-  <div>
-    <a href=""> < </a>
-    <a href=""> 1 </a>
-    <a href=""> 2 </a>
-    <a href=""> 3 </a>
-    <a href=""> > </a>
-  </div>
 </body>
 </html>

@@ -20,6 +20,6 @@ echo "<br>";
 echo $res_student;
 echo "刪除成功:";
 
-header("location:../index.php");
+header("location:../index.php?del={$_GET['id']}");
 
 ?>
