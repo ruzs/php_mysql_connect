@@ -123,7 +123,33 @@
     ?>
     <?php 
     //頁碼區
-    for($i=1;$i<=$pages;$i++){
+    //只顯示前後四個頁碼
+
+    if($now>=3 && $now<=($pages-2)){  //判斷頁碼在>=3 及小於最後兩頁的狀況
+      $startPage=$now-2;
+  }else if($now-2<3){ //判斷頁碼在1,2頁的狀況
+      $startPage=1;
+  }else{  //判斷頁碼在最後兩頁的狀況
+      $startPage=$pages-4;
+  }
+
+  for($i=$startPage;$i<=($startPage+4);$i++){
+      $nowPage=($i==$now)?'now':'';
+      if(isset($_GET['code'])){
+          echo "<a href='?page=$i&code={$_GET['code']}' class='$nowPage'> ";
+          echo $i;
+          echo " </a>";
+
+      }else{
+          echo "<a href='?page=$i' class='$nowPage'> ";
+          echo $i;
+          echo " </a>";
+      }
+  }
+
+
+//全部頁碼顯示
+/*     for($i=1;$i<=$pages;$i++){
       $nowPage=($i==$now)?'now':'';
         if(isset($_GET['code'])){
             echo "<a href='?page=$i&code={$_GET['code']}'class='$nowPage'> ";
@@ -136,7 +162,7 @@
             echo $i;
             echo " </a>";
         }
-    }
+    }*/
 
     ?>
     <?php
