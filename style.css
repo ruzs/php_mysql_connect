@@ -2,11 +2,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 微軟正黑體;
+}
+body{
+  text-align: center;
 }
 table{
   border-spacing: 0;
   border-collapse:separate;
   text-align: center;
+  margin: 0px auto;
 }
 table td{
   padding: 5px 10px;
@@ -25,6 +30,7 @@ a:hover{
 }
 .class-list{
   display: flex; 
+  justify-content: center;
   list-style-type: none;
   margin:5px 0;
 }
@@ -41,4 +47,28 @@ nav ul.class-list li a{
   color:white;
   font-weight: bolder;
   text-decoration: underline;
+  box-shadow: 1px 1px 5px rgb(0, 0, 174);
+}
+.pages a.FE{
+  text-align: center;
+  line-height: 30px;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: lightblue;
+  margin: 3px;
+  box-shadow: 1px 1px 5px skyblue;
+}
+.pages a{
+  width: 25px;
+  height: 25px;
+  border-radius: 25%;
+  box-shadow: 1px 1px 5px #ccc;
+  margin: 0 2px;
+  user-select: none;
+  line-height: 25px;
+}
+a.now{
+  background-color: lightgreen;
+  box-shadow: 1px 1px 5px rgb(121, 202, 121);
 }
