@@ -49,6 +49,14 @@ nav ul.class-list li a{
   text-decoration: underline;
   box-shadow: 1px 1px 5px rgb(0, 0, 174);
 }
+.pages{
+  font-size:20px;
+  font-weight: bolder;
+  margin:1rem auto;
+  display: flex;
+  justify-content: space-between;
+  width:800px;
+}
 .pages a.FE{
   text-align: center;
   line-height: 30px;
@@ -60,15 +68,19 @@ nav ul.class-list li a{
   box-shadow: 1px 1px 5px skyblue;
 }
 .pages a{
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
   border-radius: 25%;
   box-shadow: 1px 1px 5px #ccc;
   margin: 0 2px;
   user-select: none;
-  line-height: 25px;
 }
 a.now{
   background-color: lightgreen;
   box-shadow: 1px 1px 5px rgb(121, 202, 121);
+}
+.pages a.noshow{
+  border:0px solid #eee;
+  box-shadow: initial;
 }

@@ -119,7 +119,27 @@
         echo "&lt; ";
         echo " </a>";
       }
+    }else{
+        echo "<a class='noshow'>&nbsp;</a>";
     }
+    ?>
+    <div>
+    <?php
+        //顯示第一頁
+        if ($pages>4) {
+
+          if($now>=4){
+              if(isset($_GET['code'])){
+                  echo "<a href='?page=1&code={$_GET['code']}'> ";
+                  echo "1 ";
+                  echo " </a>...";
+              }else{
+                  echo "<a href='?page=1'> ";
+                  echo "1 ";
+                  echo " </a>...";
+              }
+          }
+        }
     ?>
     <?php 
     //頁碼區
@@ -139,7 +159,6 @@
           echo "<a href='?page=$i&code={$_GET['code']}' class='$nowPage'> ";
           echo $i;
           echo " </a>";
-
       }else{
           echo "<a href='?page=$i' class='$nowPage'> ";
           echo $i;
@@ -163,8 +182,25 @@
             echo " </a>";
         }
     }*/
-
     ?>
+    <?php
+    ////顯示第最後一頁
+    if ($pages>4) {
+
+      if($now<=($pages-3)){
+          if(isset($_GET['code'])){
+              echo "...<a href='?page=$pages&code={$_GET['code']}'> ";
+              echo "$pages";
+              echo " </a>";
+          }else{
+              echo "...<a href='?page=$pages'> ";
+              echo "$pages";
+              echo " </a>";
+          }
+      }
+    }
+    ?>
+    </div>
     <?php
     //下一頁
     //當前頁碼+1,可是不能超過總頁數,最大是總頁數,如果超過總頁數,不顯示
@@ -181,6 +217,8 @@
         echo "&gt; ";
         echo " </a>";
       }
+    }else{
+      echo "<a class='noshow'>&nbsp;</a>";
     }
 
     ?>
