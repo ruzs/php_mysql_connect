@@ -44,12 +44,12 @@
 
     $div=10;
     $total=$pdo->query($sql_total)->fetchColumn();
-    // echo "總筆數為:".$total;
+    echo "總筆數為:".$total;
     $pages=ceil($total/$div);
-    // echo "總頁數為:".$pages;
+    echo "總頁數為:".$pages;
      //$now=(isset($_GET['page']))?$_GET['page']:1;
     $now=$_GET['page']??1;
-    // echo "當前頁為:". $now;
+    echo "當前頁為:". $now;
     $start=($now-1)*$div;
 
     $sql=$sql. " LIMIT $start,$div";
@@ -66,11 +66,19 @@
   ?>
 </head>
 <body>
+<?php 
+if(isset($_GET['del'])){
+    echo "<div class='del-msg'>";
+    echo $_GET['del'];
+    echo "</div>";
+}
+?>
   <!-- <pre>
   <?php //print_r($rows);?> ;
 </pre> -->
   <h1 style="text-align:center">學生管理系統</h1>
   <nav>
+    <a href="add.php">新增學生</a>
     <a href="reg.php">教師註冊</a>
     <a href="login.php">教師登入</a>
   </nav>
@@ -86,6 +94,21 @@
       ?>  
     </ul>
   </nav>
+  <?php
+    if(isset($_GET['status'])){
+      switch($_GET['status']){
+        case 'add_success':
+          echo "<span style='color:green'>新增學生成功</span>";
+        break;
+        case 'add_fail';
+          echo "<span style='color:red'>新增學生有誤</span>";
+        break;
+        case 'edit_error':
+          echo "<span style='color:red'>無法編輯，請洽管理員，或正確操作</span>";
+        break;
+      }
+    }
+  ?>
   <div class="pages">
   <?php
     //上一頁
@@ -214,6 +237,7 @@
       <td>生日</td>
       <td>畢業國中代碼</td>
       <td>年齡</td>
+      <td>操作</td>
     </tr>
   <?php
   foreach ($rows as $row) {
@@ -224,6 +248,12 @@
     echo "<td>{$row['生日']}</td>";
     echo "<td>{$row['畢業國中']}</td>";
     echo "<td>{$age}</td>";
+    echo "<td>";
+    echo "<a href='edit.php?id={$row['id']}'>編輯</a>";
+    //echo "<a href='./api/del_student.php?id={$row['id']}'>刪除</a>";
+    echo "<a href='./confirm_del.php?id={$row['id']}'>刪除</a>";
+    //echo "<a href='del.php?id={$row['id']}'>刪除</a>";
+    echo "</td>";
     echo "</tr>";
   }
   ?>
