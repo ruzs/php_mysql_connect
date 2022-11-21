@@ -20,5 +20,5 @@ echo "<br>";
 echo $res_student;
 echo "刪除成功:";
 
-header("location:../index.php?del=已成功刪除學生{$student['name']}的所有資料！！");
+header("location:../admin_center.php?del=已成功刪除學生{$student['name']}的所有資料！！");
 ?>

@@ -79,8 +79,7 @@ if(isset($_GET['del'])){
   <h1 style="text-align:center">學生管理系統</h1>
   <nav>
     <a href="add.php">新增學生</a>
-    <a href="reg.php">教師註冊</a>
-    <a href="login.php">教師登入</a>
+    <a href="logout.php">教師登出</a>
   </nav>
   <nav>
     <ul class="class-list">
@@ -159,19 +158,36 @@ if(isset($_GET['del'])){
   }else{  //判斷頁碼在最後兩頁的狀況
       $startPage=$pages-4;
   }
-
-  for($i=$startPage;$i<=($startPage+4);$i++){
+  if ($pages>4) {
+    for($i=$startPage;$i<=($startPage+4);$i++){
+        $nowPage=($i==$now)?'now':'';
+        if(isset($_GET['code'])){
+            echo "<a href='?page=$i&code={$_GET['code']}' class='$nowPage'> ";
+            echo $i;
+            echo " </a>";
+        }else{
+            echo "<a href='?page=$i' class='$nowPage'> ";
+            echo $i;
+            echo " </a>";
+        }
+    }
+  } else {
+    for($i=1;$i<=$pages;$i++){
       $nowPage=($i==$now)?'now':'';
-      if(isset($_GET['code'])){
-          echo "<a href='?page=$i&code={$_GET['code']}' class='$nowPage'> ";
-          echo $i;
-          echo " </a>";
-      }else{
-          echo "<a href='?page=$i' class='$nowPage'> ";
-          echo $i;
-          echo " </a>";
-      }
+        if(isset($_GET['code'])){
+            echo "<a href='?page=$i&code={$_GET['code']}'class='$nowPage'> ";
+            echo $i;
+            echo " </a>";
+
+        }else{
+
+            echo "<a href='?page=$i'class='$nowPage'> ";
+            echo $i;
+            echo " </a>";
+        }
+    }
   }
+  
 
 
 //全部頁碼顯示
@@ -191,9 +207,8 @@ if(isset($_GET['del'])){
     }*/
     ?>
     <?php
-    ////顯示第最後一頁
+    ////顯示最後一頁
     if ($pages>5) {
-
       if($now<=($pages-3)){
           if(isset($_GET['code'])){
               echo "...<a href='?page=$pages&code={$_GET['code']}'> ";

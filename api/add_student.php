@@ -42,5 +42,5 @@ if($res1 && $res2){
 }else{
   $status='add_fail';
 }
-header("location:../index.php?status=$status");
+header("location:../admin_center.php?status=$status");
 ?>

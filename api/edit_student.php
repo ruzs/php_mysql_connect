@@ -49,4 +49,5 @@ echo "<br>";
 $res1 = $pdo->exec($sql_students);
 $res2 = $pdo->exec($sql_class_student);
 echo "編輯成功:" . $res;
-header("location:../index.php");
+header("location:../admin_center.php");
+?>

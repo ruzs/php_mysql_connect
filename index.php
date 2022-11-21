@@ -110,7 +110,7 @@
     <div>
     <?php
         //顯示第一頁
-        if ($pages>4) {
+        if ($pages>5) {
 
           if($now>=4){
               if(isset($_GET['code'])){
@@ -137,18 +137,37 @@
       $startPage=$pages-4;
   }
 
-  for($i=$startPage;$i<=($startPage+4);$i++){
+  if ($pages>4) {
+    for($i=$startPage;$i<=($startPage+4);$i++){
+        $nowPage=($i==$now)?'now':'';
+        if(isset($_GET['code'])){
+            echo "<a href='?page=$i&code={$_GET['code']}' class='$nowPage'> ";
+            echo $i;
+            echo " </a>";
+        }else{
+            echo "<a href='?page=$i' class='$nowPage'> ";
+            echo $i;
+            echo " </a>";
+        }
+    }
+  } else {
+    for($i=1;$i<=$pages;$i++){
       $nowPage=($i==$now)?'now':'';
-      if(isset($_GET['code'])){
-          echo "<a href='?page=$i&code={$_GET['code']}' class='$nowPage'> ";
-          echo $i;
-          echo " </a>";
-      }else{
-          echo "<a href='?page=$i' class='$nowPage'> ";
-          echo $i;
-          echo " </a>";
-      }
+        if(isset($_GET['code'])){
+            echo "<a href='?page=$i&code={$_GET['code']}'class='$nowPage'> ";
+            echo $i;
+            echo " </a>";
+
+        }else{
+
+            echo "<a href='?page=$i'class='$nowPage'> ";
+            echo $i;
+            echo " </a>";
+        }
+    }
   }
+  
+
 
 
 //全部頁碼顯示
@@ -169,7 +188,7 @@
     ?>
     <?php
     ////顯示第最後一頁
-    if ($pages>4) {
+    if ($pages>5) {
 
       if($now<=($pages-3)){
           if(isset($_GET['code'])){
