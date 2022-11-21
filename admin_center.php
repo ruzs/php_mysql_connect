@@ -133,7 +133,7 @@ if(isset($_GET['del'])){
     <div>
     <?php
         //顯示第一頁
-        if ($pages>4) {
+        if ($pages>5) {
 
           if($now>=4){
               if(isset($_GET['code'])){
@@ -192,7 +192,7 @@ if(isset($_GET['del'])){
     ?>
     <?php
     ////顯示第最後一頁
-    if ($pages>4) {
+    if ($pages>5) {
 
       if($now<=($pages-3)){
           if(isset($_GET['code'])){
