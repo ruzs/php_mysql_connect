@@ -68,8 +68,8 @@ nav ul.class-list li a{
   box-shadow: 1px 1px 5px skyblue;
 }
 .pages a{
-  width: 30px;
-  height: 30px;
+  /* width: 30px;
+  height: 30px; */
   line-height: 30px;
   border-radius: 25%;
   box-shadow: 1px 1px 5px #ccc;
@@ -83,4 +83,13 @@ a.now{
 .pages a.noshow{
   border:0px solid #eee;
   box-shadow: initial;
+}
+.del-msg{
+  width: 80%;
+  text-align: center;
+  font-size: 2rem;
+  background: pink;
+  margin: 1rem auto;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
 }
