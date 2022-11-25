@@ -66,6 +66,9 @@
   ?>
 </head>
 <body>
+  <?php
+  include "./layouts/header.php";
+  ?>
   <!-- <pre>
   <?php //print_r($rows);?> ;
 </pre> -->

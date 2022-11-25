@@ -73,6 +73,9 @@ if(!isset($_SESSION['login'])){
   ?>
 </head>
 <body>
+<?php
+include "./layouts/header.php";
+?>
 <?php 
 if(isset($_GET['del'])){
     echo "<div class='del-msg'>";
