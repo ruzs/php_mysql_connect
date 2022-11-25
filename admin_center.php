@@ -86,18 +86,9 @@ if(isset($_GET['del'])){
     <a href="add.php">新增學生</a>
     <a href="logout.php">教師登出</a>
   </nav>
-  <nav>
-    <ul class="class-list">
-      <?php
-          //從`classes`資料表中撈出所有的班級資料並在網頁上製作成下拉選單的項目
-          $sql="SELECT `id`,`code`,`name` FROM `classes`";
-          $classes=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-          foreach($classes as $class){
-              echo "<li><a href='?code={$class['code']}'>{$class['name']}</a></li>";
-          }
-      ?>  
-    </ul>
-  </nav>
+    <?php
+      include "./layouts/class_nav.php"
+    ?>  
   <?php
     if(isset($_GET['status'])){
       switch($_GET['status']){
