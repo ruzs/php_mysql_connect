@@ -1,5 +1,5 @@
 <?php
-include "base.php";
+include "../base.php";
 
 echo "<pre>";
 print_r($_POST);

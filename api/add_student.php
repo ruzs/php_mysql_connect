@@ -1,5 +1,5 @@
 <?php
-include "base.php";
+include "../base.php";
 
 $school_num=$_POST['school_num'];
 $name=$_POST['name'];

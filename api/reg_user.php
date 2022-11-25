@@ -1,5 +1,5 @@
 <?php
-include "base.php";
+include "../base.php";
 
 $acc=trim($_POST['acc']);
 $pw=trim($_POST['pw']);

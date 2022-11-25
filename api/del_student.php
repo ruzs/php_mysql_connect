@@ -1,5 +1,5 @@
 <?php
-include "base.php";
+include "../base.php";
 
 //echo $_GET['id'];
 $student=$pdo->query("SELECT * FROM `students` where `id`='{$_GET['id']}'")

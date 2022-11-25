@@ -10,9 +10,9 @@ if(isset($_GET['del'])){
 if(isset($_GET['code'])){
     $sql="SELECT `students`.`id`,
                 `students`.`school_num` as '學號',
-                 `students`.`name` as '姓名',
-                 `students`.`birthday` as '生日',
-                 `students`.`graduate_at` as '畢業國中'
+                `students`.`name` as '姓名',
+                `students`.`birthday` as '生日',
+                `students`.`graduate_at` as '畢業國中'
           FROM `class_student`,`students` 
           WHERE `class_student`.`school_num`=`students`.`school_num` && 
                 `class_student`.`class_code`='{$_GET['code']}'";
@@ -23,27 +23,27 @@ if(isset($_GET['code'])){
 }else{
     //建立撈取學生資料的語法，限制只撈取前20筆
     $sql="SELECT `students`.`id`,
-                 `students`.`school_num` as '學號',
-                 `students`.`name` as '姓名',
-                 `students`.`birthday` as '生日',
-                 `students`.`graduate_at` as '畢業國中'
+                `students`.`school_num` as '學號',
+                `students`.`name` as '姓名',
+                `students`.`birthday` as '生日',
+                `students`.`graduate_at` as '畢業國中'
           FROM `students`";
     $sql_total="SELECT count(`students`.`id`)
           FROM `students`";
 }
 /**
  * 分頁參數處理中心
- */
+*/
 
- $div=10;
- $total=$pdo->query($sql_total)->fetchColumn();
- //echo "總筆數為:".$total;
- $pages=ceil($total/$div);
- //echo "總頁數為:".$pages;
- //$now=(isset($_GET['page']))?$_GET['page']:1;
- $now=$_GET['page']??1;
- //echo "當前頁為:". $now;
- $start=($now-1)*$div;
+$div=10;
+$total=$pdo->query($sql_total)->fetchColumn();
+//echo "總筆數為:".$total;
+$pages=ceil($total/$div);
+//echo "總頁數為:".$pages;
+//$now=(isset($_GET['page']))?$_GET['page']:1;
+$now=$_GET['page']??1;
+//echo "當前頁為:". $now;
+$start=($now-1)*$div;
 
 $sql=$sql. " LIMIT $start,$div";
 //執行SQL語法，並從資料庫取回全部符合的資料，加上PDO::FETCH_ASSOC表示只需回傳帶有欄位名的資料
