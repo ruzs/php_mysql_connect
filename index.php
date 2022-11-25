@@ -68,7 +68,13 @@
 <body>
   <?php
   include "./layouts/header.php";
+  include "b.php";  
+  $a=10;
+  $b=5;
+  $c=$a+$b;
+  echo $c;
   ?>
+
   <!-- <pre>
   <?php //print_r($rows);?> ;
 </pre> -->
