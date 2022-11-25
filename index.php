@@ -1,3 +1,6 @@
+<?php
+include "base.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,13 +10,7 @@
   <title>學生管理系統</title>
   <link rel="stylesheet" href="style.css">
   <?php
-  $dsn="mysql:host=localhost;charset=utf8;dbname=school";
-  // $db=mysqli_connect('localhost','root','','school');
-  // mysqli_set_charset($db,'utf8');
-
-  $pdo= new PDO($dsn,'root','');
-  //固定語法 new PDO(  ,'帳號(預設為root)'.'密碼');
-
+  
   if(isset($_GET['code'])){
     $sql="SELECT `students`.`id`,
                 `students`.`school_num` as '學號',
@@ -59,7 +56,7 @@
 
   $rows=$pdo ->query($sql)->fetchAll(PDO::FETCH_ASSOC);
   //query() 查詢 fetch調資料 All為全部   (FETCH_NAMED ASSOC)
-
+  include "./layouts/style.php";
   // echo "<pre>";
   // print_r($rows);
   // echo "</pre>";
@@ -68,11 +65,6 @@
 <body>
   <?php
   include "./layouts/header.php";
-  include "b.php";  
-  $a=10;
-  $b=5;
-  $c=$a+$b;
-  echo $c;
   ?>
 
   <!-- <pre>

@@ -4,6 +4,7 @@ if(!isset($_SESSION['login'])){
     header("location:index.php");
     exit();
 }
+include "base.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,13 +15,7 @@ if(!isset($_SESSION['login'])){
   <title>學生管理系統</title>
   <link rel="stylesheet" href="style.css">
   <?php
-  $dsn="mysql:host=localhost;charset=utf8;dbname=school";
-  // $db=mysqli_connect('localhost','root','','school');
-  // mysqli_set_charset($db,'utf8');
-
-  $pdo= new PDO($dsn,'root','');
-  //固定語法 new PDO(  ,'帳號(預設為root)'.'密碼');
-
+  
   if(isset($_GET['code'])){
     $sql="SELECT `students`.`id`,
                 `students`.`school_num` as '學號',
