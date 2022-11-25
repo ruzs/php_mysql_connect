@@ -1,19 +1,3 @@
-<?php
-include "base.php";
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>編輯學生資料</title>
-</head>
-<body>
-<?php
-    include "./layouts/header.php";
-?>
   <h1>編輯學生資料</h1>
   <?php
   if (isset($_GET['id'])) {
@@ -27,7 +11,7 @@ include "base.php";
     <table>
       <tr>
         <td>school_num</td>
-        <td><?=$student['school_num'];?></td>
+        <td><?= $student['school_num']; ?></td>
       </tr>
       <tr>
         <td>name</td>
@@ -51,12 +35,12 @@ include "base.php";
       </tr>
       <tr>
         <td>tel</td>
-        <td><input type="text" name="tel" value="<?=$student['tel'];?>"></td>
+        <td><input type="text" name="tel" value="<?= $student['tel']; ?>"></td>
       </tr>
       <tr>
         <td>dept</td>
         <td>
-          <?=$student['dept'];?>
+          <?= $student['dept']; ?>
           <select name="dept">
             <?php
             //從`dept`資料表中撈出所有的科系資料並在網頁上製作成下拉選單的項目
@@ -68,7 +52,7 @@ include "base.php";
               }else{
                   $selected='';
               } */
-              $selected=($dept['id']==$student['dept'])?'selected':'';
+              $selected = ($dept['id'] == $student['dept']) ? 'selected' : '';
               echo "<option value='{$dept['id']}' $selected>{$dept['name']}</option>";
             }
             ?>
@@ -84,7 +68,7 @@ include "base.php";
             $sql = "SELECT * FROM `graduate_school`";
             $grads = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
             foreach ($grads as $grad) {
-              $selected=($grad['id']==$student['graduate_at'])?'selected':'';
+              $selected = ($grad['id'] == $student['graduate_at']) ? 'selected' : '';
               echo "<option value='{$grad['id']}' $selected>{$grad['county']}{$grad['name']}</option>";
             }
             ?>
@@ -100,7 +84,7 @@ include "base.php";
             $sql = "SELECT * FROM `status`";
             $rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
             foreach ($rows as $row) {
-              $selected=($row['code']==$student['status_code'])?'selected':'';
+              $selected = ($row['code'] == $student['status_code']) ? 'selected' : '';
               echo "<option value='{$row['code']}' $selected>{$row['status']}</option>";
             }
             ?>
@@ -112,12 +96,12 @@ include "base.php";
         <td>
           <select name="class_code">
             <?php
-            $stu_class=$pdo->query("SELECT * FROM `class_student` WHERE `school_num`='{$student['school_num']}'")->fetch(PDO::FETCH_ASSOC);
+            $stu_class = $pdo->query("SELECT * FROM `class_student` WHERE `school_num`='{$student['school_num']}'")->fetch(PDO::FETCH_ASSOC);
             //從`classes`資料表中撈出所有的班級資料並在網頁上製作成下拉選單的項目
             $sql = "SELECT `id`,`code`,`name` FROM `classes`";
             $rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
             foreach ($rows as $row) {
-              $selected=($row['code']==$stu_class['class_code'])?'selected':'';
+              $selected = ($row['code'] == $stu_class['class_code']) ? 'selected' : '';
               echo "<option value='{$row['code']}' $selected>{$row['name']}</option>";
             }
             ?>
@@ -125,13 +109,10 @@ include "base.php";
         </td>
       </tr>
       <tr>
-            <td>座號</td>
-            <td><?=$stu_class['seat_num'];?></td>
+        <td>座號</td>
+        <td><?= $stu_class['seat_num']; ?></td>
       </tr>
     </table>
-    <input type="hidden" name="id" value="<?=$student['id'];?>">
+    <input type="hidden" name="id" value="<?= $student['id']; ?>">
     <input type="submit" value="確認修改">
   </form>
-</body>
-
-</html>

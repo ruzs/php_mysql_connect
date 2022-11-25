@@ -8,7 +8,7 @@ if(isset($_GET['error'])){
 }
 ?>
 </div>
-<form action="./api/chk_user.php" method="post">
+<form action="../api/chk_user.php" method="post">
     <div>帳號:<input type="text" name="acc" id=""></div>
     <div>密碼:<input type="password" name="pw" id=""></div>
     <div><input type="submit" value="登入" id=""></div>

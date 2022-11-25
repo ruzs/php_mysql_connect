@@ -20,6 +20,12 @@ include "base.php";
     <?php
       $do=$_GET['do']??'main';
 
+      /* if(isset($_GET['do'])){
+          $do=$_GET['do'];
+      }else{
+          $do='main';
+      } */
+
       switch($do){
           case 'login':
               include "./front/login.php";
