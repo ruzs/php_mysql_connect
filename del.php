@@ -7,6 +7,9 @@
   <title>移除學生</title>
 </head>
 <body>
+<?php
+    include "./layouts/header.php";
+?>
   <h1>移除學生</h1>
 </body>
 </html>

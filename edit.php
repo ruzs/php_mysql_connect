@@ -12,6 +12,9 @@ $pdo=new PDO($dsn,'root','');
   <title>編輯學生資料</title>
 </head>
 <body>
+<?php
+    include "./layouts/header.php";
+?>
   <h1>編輯學生資料</h1>
   <?php
   if (isset($_GET['id'])) {

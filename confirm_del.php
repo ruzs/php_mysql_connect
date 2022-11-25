@@ -39,6 +39,9 @@ $student=$pdo->query("SELECT * FROM `students` where `id`='{$_GET['id']}'")
     </style>
 </head>
 <body>
+<?php
+    include "./layouts/header.php";
+?>
     <div class="dialog">
         <h1>刪除確認</h1>    
         <div class="msg">

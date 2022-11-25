@@ -16,6 +16,9 @@
   </style>
 </head>
 <body>
+<?php
+    include "./layouts/header.php";
+?>
   <h1>教師註冊</h1>
   <form action="./api/reg_user.php" method="post">
     <div><label for="">帳號：<input type="text" name="acc"></label></div>
