@@ -1,3 +1,10 @@
+<?php 
+if(isset($_GET['del'])){
+    echo "<div class='del-msg'>";
+    echo $_GET['del'];
+    echo "</div>";
+}
+?>
 <?php
 
 if(isset($_GET['code'])){

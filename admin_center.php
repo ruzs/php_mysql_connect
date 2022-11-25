@@ -16,19 +16,9 @@ include "base.php";
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<?php
-include "./layouts/header.php";
-?>
-<?php 
-if(isset($_GET['del'])){
-    echo "<div class='del-msg'>";
-    echo $_GET['del'];
-    echo "</div>";
-}
-?>
-  <!-- <pre>
-  <?php //print_r($rows);?> ;
-</pre> -->
+  <?php
+  include "./layouts/header.php";
+  ?>
   <h1 style="text-align:center">學生管理系統</h1>
   <nav>
     <a href="add.php">新增學生</a>
