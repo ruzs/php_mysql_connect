@@ -19,23 +19,19 @@ include "base.php";
   
     <?php
       $do=$_GET['do']??'main';
-
       /* if(isset($_GET['do'])){
           $do=$_GET['do'];
       }else{
           $do='main';
       } */
-
-      switch($do){
-          case 'login':
-              include "./front/login.php";
-          break;
-          case 'reg':
-              include  "./front/reg.php";
-          break;
-          default:
-              include "./front/main.php";
+      
+      $file="./front/".$do.".php";
+      if(file_exists($file)){
+        include $file;
+      }else{
+        include "./front/main.php";
       }
+
     ?>
 </body>
 </html>

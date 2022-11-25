@@ -1,6 +1,6 @@
 
   <h1>新增學生</h1>
-  <form action="api/add_student.php" method="post">
+  <form action="./api/add_student.php" method="post">
     <table>
       <tr>
         <td>school_num</td>

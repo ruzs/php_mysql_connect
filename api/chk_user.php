@@ -21,6 +21,6 @@ if($chk==1){
     }else{
         $_SESSION['login_try']=1;
     }
-    header("location:../login.php?error=login");
+    header("location:../?do=login");
 }
 ?>

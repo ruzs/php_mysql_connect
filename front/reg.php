@@ -1,5 +1,5 @@
   <h1>教師註冊</h1>
-  <form action="../api/reg_user.php" method="post">
+  <form action="./api/reg_user.php" method="post">
     <div><label for="">帳號：<input type="text" name="acc"></label></div>
     <div><label for="">密碼：<input type="password" name="pw"></label></div>
     <div><label for="">信箱：<input type="text" name="email"></label></div>

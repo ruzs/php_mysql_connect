@@ -78,17 +78,18 @@ $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     <div>
     <?php
         //顯示第一頁
-        if($now>=4){
-            if(isset($_GET['code'])){
-                echo "<a href='?page=1&code={$_GET['code']}'> ";
-                echo "1 ";
-                echo " </a>...";
+        if ($pages>5) {
 
-            }else{
-
-                echo "<a href='?page=1'> ";
-                echo "1 ";
-                echo " </a>...";
+            if($now>=4){
+                if(isset($_GET['code'])){
+                    echo "<a href='?page=1&code={$_GET['code']}'> ";
+                    echo "1 ";
+                    echo " </a>...";
+                }else{
+                    echo "<a href='?page=1'> ";
+                    echo "1 ";
+                    echo " </a>...";
+                }
             }
         }
     ?>
@@ -104,19 +105,35 @@ $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
             $startPage=$pages-4;
         }
 
-        for($i=$startPage;$i<=($startPage+4);$i++){
-            $nowPage=($i==$now)?'now':'';
-            if(isset($_GET['code'])){
-                echo "<a href='?page=$i&code={$_GET['code']}' class='$nowPage'> ";
-                echo $i;
-                echo " </a>";
-
-            }else{
-                echo "<a href='?page=$i' class='$nowPage'> ";
-                echo $i;
-                echo " </a>";
+        if ($pages>4) {
+            for($i=$startPage;$i<=($startPage+4);$i++){
+                $nowPage=($i==$now)?'now':'';
+                if(isset($_GET['code'])){
+                    echo "<a href='?page=$i&code={$_GET['code']}' class='$nowPage'> ";
+                    echo $i;
+                    echo " </a>";
+                }else{
+                    echo "<a href='?page=$i' class='$nowPage'> ";
+                    echo $i;
+                    echo " </a>";
+                }
             }
-        }
+          } else {
+            for($i=1;$i<=$pages;$i++){
+              $nowPage=($i==$now)?'now':'';
+                if(isset($_GET['code'])){
+                    echo "<a href='?page=$i&code={$_GET['code']}'class='$nowPage'> ";
+                    echo $i;
+                    echo " </a>";
+        
+                }else{
+        
+                    echo "<a href='?page=$i'class='$nowPage'> ";
+                    echo $i;
+                    echo " </a>";
+                }
+            }
+          }
 
 
     //全部頁碼顯示
@@ -137,6 +154,7 @@ $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     ?>
         <?php
         //顯示第最後一頁
+        if ($pages>5) {
         if($now<=($pages-3)){
             if(isset($_GET['code'])){
                 echo "...<a href='?page=$pages&code={$_GET['code']}'> ";
@@ -150,6 +168,7 @@ $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
                 echo " </a>";
             }
         }
+    }
     ?>
     </div>
     <?php
@@ -213,10 +232,10 @@ foreach($rows as $row){
   echo "<td>{$age}</td>";
   echo "<td>";
   //加上連結將頁面導向edit.php，同時以GET方式將學生資料的id傳遞到edit.php
-  echo "<a href='edit.php?id={$row['id']}'>編輯</a>";
+  echo "<a href='?do=edit&id={$row['id']}'>編輯</a>";
   //加上連結將頁面導向del.php，同時以GET方式將學生資料的id傳遞到del.php
   //echo "<a href='./api/del_student.php?id={$row['id']}'>刪除</a>";
-  echo "<a href='./confirm_del.php?id={$row['id']}'>刪除</a>";
+  echo "<a href='?do=confirm_del&id={$row['id']}'>刪除</a>";
   //echo "<a href='del.php?id={$row['id']}'>刪除</a>";
   echo "</td>";
   echo "</tr>";
