@@ -1,4 +1,7 @@
 <?php
+    include "./layouts/class_nav.php"
+?>  
+<?php
 if (isset($_GET['code'])) {
     $sql = "SELECT `students`.`id`,
                     `students`.`school_num` as '學號',
