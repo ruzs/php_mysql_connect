@@ -31,12 +31,15 @@ a:hover{
 .class-list{
   display: flex; 
   justify-content: center;
+  flex-wrap: wrap;
   list-style-type: none;
   margin:5px 0;
 }
 nav ul.class-list li a{
+  width: 88px;
+  height: 32px;
   padding:5px 12px;
-  margin:0 2px;
+  margin:2px 2px;
   border-radius:5px;
   background-color: lightskyblue;
   box-shadow: 2px 2px 3px skyblue;
