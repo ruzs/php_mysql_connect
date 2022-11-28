@@ -5,7 +5,7 @@ $news=$pdo->query("SELECT * FROM `news` WHERE `id`='{$_GET['id']}'")->fetch();
 ?>
 
 <h2 class="text-center">編輯消息</h2>
-<form action="./api/edit_news.php" method="POST">
+<form action="./api/news_edit.php" method="POST">
    <div class="form-group row">
         <label class="col-form-label col-md-2 text-right">主題</label>
         <input  type="text" 
@@ -17,11 +17,11 @@ $news=$pdo->query("SELECT * FROM `news` WHERE `id`='{$_GET['id']}'")->fetch();
     <div class="col-md-6 row">
         <span class="col-md-4 text-right mr-2">置頂</span>
         <div class="form-check mx-2 d-flex align-items-center">
-            <input class="form-check-input" type="radio" name="top" <?=($news['top']==1)?'checked':'';?>>
+            <input class="form-check-input" type="radio" name="top" value='1'<?=($news['top']==1)?'checked':'';?>>
             <label class="col-form-label">Yes</label>
         </div>
         <div class="form-check mx-2 d-flex align-items-center">
-            <input class="form-check-input" type="radio" name="top" <?=($news['top']==0)?'checked':'';?>>
+            <input class="form-check-input" type="radio" name="top" value='0'<?=($news['top']==0)?'checked':'';?>>
             <label class="col-form-label">No</label>
         </div>
     </div>
