@@ -115,5 +115,6 @@
     </table>
     <input type="hidden" name="id" value="<?= $student['id']; ?>">
     <input type="submit" value="確認修改">
+    <button onclick="location.href='admin_center.php'">取消</button>
     
   </form>

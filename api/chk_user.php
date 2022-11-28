@@ -21,6 +21,7 @@ if($chk==1){
     }else{
         $_SESSION['login_try']=1;
     }
-    header("location:../?do=login");
-}
+
+    //如果帳號或密碼有錯，則將使用者導向登入頁，並帶上錯誤值
+    header("location:../index.php?do=login&error=login");}
 ?>

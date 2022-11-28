@@ -1,9 +1,9 @@
 <?php
 include "../base.php";
 
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_POST);
+// echo "</pre>";
 $id = $_POST['id'];
 //建立變數接收表單傳送過來的資料
 $name = $_POST['name'];

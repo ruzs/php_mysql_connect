@@ -3,7 +3,7 @@
   <form action="./api/add_student.php" method="post">
     <table>
       <tr>
-        <td>school_num</td>
+        <td>school_num(學號)</td>
         <!-- <td><input type="text" name="school_num"></td> -->
         <?php
           $sql="SELECT max(`school_num`) FROM `students`";
@@ -26,31 +26,31 @@
         <td><input type="text" name="school_num" value="<?=$max+1;?>"></td>
       </tr>
       <tr>
-        <td>name</td>
+        <td>name(姓名)</td>
         <td><input type="text" name="name"></td>
       </tr>
       <tr>
-        <td>birthday</td>
+        <td>birthday(出生年月日)</td>
         <td><input type="date" name="birthday"></td>
       </tr>
       <tr>
-        <td>uni_id</td>
+        <td>uni_id(身分證字號)</td>
         <td><input type="text" name="uni_id"></td>
       </tr>
       <tr>
-        <td>addr</td>
+        <td>addr(地址)</td>
         <td><input type="text" name="addr"></td>
       </tr>
       <tr>
-        <td>parents</td>
+        <td>parents(家長)</td>
         <td><input type="text" name="parents"></td>
       </tr>
       <tr>
-        <td>tel</td>
+        <td>tel(電話)</td>
         <td><input type="text" name="tel"></td>
       </tr>
       <tr>
-        <td>dept</td>
+        <td>dept(科系)</td>
         <td>
           <select name="dept">
             <?php
@@ -64,7 +64,7 @@
         </td>
       </tr>
       <tr>
-        <td>graduate_at</td>
+        <td>graduate_at(畢業代碼)</td>
         <td>
           <select name="graduate_at">
             <?php
@@ -78,7 +78,7 @@
         </td>
       </tr>
       <tr>
-        <td>status_code</td>
+        <td>status_code(畢業狀況)</td>
         <td>
           <select name="status_code">
             <?php

@@ -19,5 +19,6 @@ echo "<br>";
 echo $res_student;
 echo "刪除成功:";
 
+//因為刪除的功能被移到後台，所以刪除成功後將使用者導回後台頁面
 header("location:../admin_center.php?del=已成功刪除學生{$student['name']}的所有資料！！");
 ?>

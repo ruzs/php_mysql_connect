@@ -18,6 +18,7 @@ echo "<br>";
 echo "email=>".$email;
 echo "<br>";
 $pdo->exec($sql);
+//註冊完成後，將使用者導向登入頁
 header("location:../?do=login")
 
 ?>

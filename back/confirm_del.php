@@ -34,7 +34,7 @@
             </div>
             <div>
                 <button onclick="location.href='./api/del_student.php?id=<?= $_GET['id']; ?>'">確定刪除</button>
-                <button onclick="location.href='index.php'">取消</button>
+                <button onclick="location.href='admin_center.php'">取消</button>
             </div>
         </div>
 
