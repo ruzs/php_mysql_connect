@@ -3,7 +3,7 @@
 
 <hr>
 <ul class="list-group">
-<li class='list-group-item list-group-item-action d-flex text-center bg-info text-white'>
+    <li class='list-group-item list-group-item-action d-flex text-center bg-info text-white'>
         <div class='col-md-6'>標題</div>
         <div class='col-md-1'>置頂</div>
         <div class='col-md-1'>點閱數</div>
@@ -15,6 +15,7 @@ $all_news="SELECT * FROM `news` ";
 $rows=$pdo->query($all_news)->fetchAll();
 
 foreach($rows as $row){
+    echo "<li class='list-group-item list-group-item-action d-flex'>";
     echo "<div class='col-md-6'>";
     echo $row['subject'];
     echo "</div>";
