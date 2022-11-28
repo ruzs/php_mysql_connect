@@ -31,7 +31,9 @@ foreach($rows as $row){
 
     echo "<div class='col-md-2 text-center'>";
     echo "<a class='btn btn-info mx-2' href='admin_center.php?do=news_edit&id={$row['id']}'>編輯</a>";
-    echo "<a class='btn btn-danger mx-2' href='admin_center.php?do=news_del&id={$row['id']}'>刪除</a>";
+    echo "<a class='btn btn-danger mx-2' href='./api/news_del.php?id={$row['id']}'>刪除</a>";
+    //如果要做中間確認對話的功能,使用以下的連結
+    //echo "<a class='btn btn-danger mx-2' href='admin_center.php?do=news_del&id={$row['id']}'>刪除</a>";
     echo "</div>";
     echo "</li>";
 }
