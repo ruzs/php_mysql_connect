@@ -17,13 +17,10 @@ include "base.php";
 </head>
 <body>
   <?php
-  // include "./layouts/header.php";
+  include "./layouts/header.php";
   ?>
   <h1 style="text-align:center">學生管理系統</h1>
-  <nav>
-    <a href="?do=add">新增學生</a>
-    <a href="?do=logout">教師登出</a>
-  </nav>
+
     <?php
       $do=$_GET['do']??'main';
       $file="./back/".$do.".php";
