@@ -1,7 +1,6 @@
   <h1>教師登入</h1>
   <div style="color:red">
 <?php
-session_start();
 if(isset($_GET['error'])){
     echo "帳號或密碼錯誤，";
     echo "登入嘗試".$_SESSION['login_try']."次";

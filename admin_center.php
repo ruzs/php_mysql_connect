@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if(!isset($_SESSION['login'])){
     header("location:index.php");
     exit();
@@ -20,6 +21,7 @@ include "base.php";
   <?php
   include "./layouts/header.php";
   ?>
+  <main class="container">
     <?php
       $do=$_GET['do']??'main';
       $file="./back/".$do.".php";
@@ -30,6 +32,7 @@ include "base.php";
         include "./back/main.php";
       }
     ?>
+    </main>
     <?php include "./layouts/scripts.php";?>
 </body>
 </html>

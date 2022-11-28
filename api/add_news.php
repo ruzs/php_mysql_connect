@@ -1,5 +1,5 @@
 <?php
-include_once "../db/base.php";
+include_once "../base.php";
 
 $sql="INSERT INTO `news`(`subject`,`content`,`type`) 
            VALUES('{$_POST['subject']}',
