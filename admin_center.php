@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 include "base.php";
 if(!isset($_SESSION['login'])){
     header("location:index.php");
