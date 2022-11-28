@@ -1,5 +1,5 @@
   <h1>教師登入</h1>
-  <div>
+  <div style="color:red">
 <?php
 session_start();
 if(isset($_GET['error'])){

@@ -14,6 +14,7 @@
                 case "admin_center":
                     echo "<a href='admin_center.php'>後台管理頁面</a>";
                     echo "<a href='admin_center.php?do=add'>新增學生</a>";
+                    echo "<a href='admin_center.php?do=news'>新聞管理</a>";
                     //<!-- <a href="?do=add">新增學生</a> -->
                     echo "<a href='logout.php'>教師登出</a>";
                 break;

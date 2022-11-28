@@ -14,9 +14,7 @@ include "base.php";
 <body>
   <?php
   include "./layouts/header.php";
-  ?>
-  <h1 style="text-align:center">學生管理系統</h1>
-  
+  ?>  
     <?php
       $do=$_GET['do']??'main';
       /* if(isset($_GET['do'])){
