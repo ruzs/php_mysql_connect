@@ -1,5 +1,6 @@
 <h1>資料庫常用自訂函式</h1>
-<h3>del()-刪除資料</h3>
+<h3>q()-萬用自訂查詢函式</h3>
+<!-- <h3>del()-刪除資料</h3> -->
 <!-- <h3>insert()-增加資料</h3> -->
 <!-- <h3>update()-更新指定條件的資料</h3> -->
 <!-- <h3>find()-存取指定條件的單筆資料</h3> -->
@@ -37,8 +38,24 @@ include_once "base.php";
 //del('students',18);
 //del('students',21);
 
-echo del('students',['dept'=>4]);
+// echo del('students',['dept'=>4]);
+$result=q("select count(id) from `students` ");
+echo $result[0][0];
 
+$students=q("SELECT `students`.`id`,
+                    `students`.`school_num` as '學號',
+                    `students`.`name` as '姓名',
+                    `students`.`birthday` as '生日',
+                    `students`.`graduate_at` as '畢業國中'
+                    FROM `class_student`,`students` 
+                    WHERE `class_student`.`school_num`=`students`.`school_num` && 
+                          `class_student`.`class_code`='101'");
+
+function q($sql)
+{
+  global $pdo;
+  return $pdo->query($sql)->fetchAll();
+}
 function del($table,$id){
   global $pdo;
   $sql="delete from `$table` ";
@@ -56,7 +73,7 @@ function del($table,$id){
   }
 
   echo $sql;
-  return $pdo->exec($sql);
+  // return $pdo->exec($sql);
 }
 
 function insert($table,$cols){
