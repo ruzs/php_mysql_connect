@@ -1,5 +1,6 @@
 <h1>資料庫常用自訂函式</h1>
-<h3>insert()-增加資料</h3>
+<h3>del()-刪除資料</h3>
+<!-- <h3>insert()-增加資料</h3> -->
 <!-- <h3>update()-更新指定條件的資料</h3> -->
 <!-- <h3>find()-存取指定條件的單筆資料</h3> -->
 <!-- <h3>all()-存取指定條件的多筆資料</h3> -->
@@ -28,21 +29,46 @@ include_once "base.php";
 
 // update('class_student',['class_code'=>101],18);
 
-insert('class_student',['school_num'=>'911799',
-                        'class_code'=>'101',
-                        'seat_num'=>50,
-                        'year'=>2000]);
+// insert('class_student',['school_num'=>'911799',
+//                         'class_code'=>'101',
+//                         'seat_num'=>50,
+//                         'year'=>2000]);
+
+//del('students',18);
+//del('students',21);
+
+echo del('students',['dept'=>4]);
+
+function del($table,$id){
+  global $pdo;
+  $sql="delete from `$table` ";
+
+  if(is_array($id)){
+      foreach($id as $key => $value){
+          $tmp[]="`$key`='$value'";
+      }
+
+      $sql = $sql . " where " . join(" && ",$tmp);
+
+  }else{
+
+      $sql=$sql . " where `id`='$id'";
+  }
+
+  echo $sql;
+  return $pdo->exec($sql);
+}
 
 function insert($table,$cols){
-global $pdo;
+  global $pdo;
 
-$keys= array_keys($cols);
-// dd(join("','",$keys));
+  $keys= array_keys($cols);
+  // dd(join("','",$keys));
 
-$sql="insert into $table (`" . join("`,`",$keys) . "`) values('" . join("','",$cols) ."')";
+  $sql="insert into $table (`" . join("`,`",$keys) . "`) values('" . join("','",$cols) ."')";
 
-echo $sql;
-return $pdo->exec($sql);
+  echo $sql;
+  return $pdo->exec($sql);
 }
 
 function update($table,$col,...$args){
