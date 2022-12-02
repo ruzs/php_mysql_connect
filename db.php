@@ -7,19 +7,50 @@ include_once "base.php";
 // dd($rows);
 // $rows=all('students',['id'=>'200']);
 // dd($rows);
-$rows=all('students',['dept'=>1,'graduate_at'=>1]," ORDER BY `id` desc");
-dd($rows);
+// $rows=all('students',['dept'=>1,'graduate_at'=>1]," ORDER BY `id` desc");
+// dd($rows);
 
-$row=find('students','100');
-dd($row);
+// $row=find('students','100');
+// dd($row);
+// $row=find('students',['name'=>'李玟玲']);
+// dd($row);
+
+// update('students',['name'=>'aaa']);
+update('students',['name'=>'王大同']);
+
+
+
+function update($table,$col,...$args){
+  global $pdo;
+  $sql="update $table set ";
+
+  if (is_array($col)) {
+    foreach ($col as $key => $value) {
+      $tmp[]="`$key` = '$value'";
+    }
+    $sql=$sql . join(",",$tmp);
+  }else{
+    echo "錯誤,請提供以陣列形式更新資料";
+  }
+
+  echo $sql;
+  return $pdo->exec($sql);
+}
 
 function find($table,$id){
   global $pdo;
-  $sql="select * from `$table` where `id`='$id'";
+  $sql="select * from `$table` ";
+  
+  if (is_array($id)) {
+    foreach ($id as $key => $value) {
+      $tmp[]="`$key` = '$value'";
+    }
+    $sql=$sql . " where " . join(" && ",$tmp);
+  }else{
+    $sql=$sql . " where `id`='$id'";
+  }
   return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-  echo $sql;
 }
-
 
 function dd($array){
   echo "<pre>";
