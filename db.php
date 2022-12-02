@@ -9,6 +9,18 @@ include_once "base.php";
 // dd($rows);
 $rows=all('students',['dept'=>1,'graduate_at'=>1]," ORDER BY `id` desc");
 dd($rows);
+
+$row=find('students','100');
+dd($row);
+
+function find($table,$id){
+  global $pdo;
+  $sql="select * from `$table` where `id`='$id'";
+  return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+  echo $sql;
+}
+
+
 function dd($array){
   echo "<pre>";
   print_r($array);
@@ -36,7 +48,7 @@ function all($table,...$args){
     }
   }
 
-  echo $sql;
+  // echo $sql;
   return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
 
