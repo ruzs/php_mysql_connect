@@ -16,8 +16,14 @@ include_once "base.php";
 // dd($row);
 
 // update('students',['name'=>'aaa']);
-update('students',['name'=>'王大同']);
+// update('students',['name'=>'王大同']);
+//update('students',['name'=>'王大同','dept'=>'4'],['id'=>19]);
+//update students set name='王大同',dept='4' where id='19'
 
+//$num=update('class_student',['class_code'=>102],['class_code'=>101]);
+//echo "一供有".$num."筆資料更新成功";
+
+update('class_student',['class_code'=>101],18);
 
 
 function update($table,$col,...$args){
@@ -32,7 +38,21 @@ function update($table,$col,...$args){
   }else{
     echo "錯誤,請提供以陣列形式更新資料";
   }
+  if(isset($args[0])){
+    if(is_array($args[0])){
+        $tmp=[];
+        foreach($args[0] as $key => $value){
+            $tmp[]="`$key`='$value'";
+        }
 
+        $sql = $sql . " where " . join(" && ",$tmp);
+
+    }else{
+
+        $sql=$sql . " where `id`='{$args[0]}'";
+    }
+  }
+  
   echo $sql;
   return $pdo->exec($sql);
 }
