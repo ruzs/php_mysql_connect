@@ -1,5 +1,8 @@
 <h1>資料庫常用自訂函式</h1>
-<h3>all()-存取指定條件的多筆資料</h3>
+<h3>insert()-增加資料</h3>
+<!-- <h3>update()-更新指定條件的資料</h3> -->
+<!-- <h3>find()-存取指定條件的單筆資料</h3> -->
+<!-- <h3>all()-存取指定條件的多筆資料</h3> -->
 <?php
 include_once "base.php";
 
@@ -23,8 +26,24 @@ include_once "base.php";
 //$num=update('class_student',['class_code'=>102],['class_code'=>101]);
 //echo "一供有".$num."筆資料更新成功";
 
-update('class_student',['class_code'=>101],18);
+// update('class_student',['class_code'=>101],18);
 
+insert('class_student',['school_num'=>'911799',
+                        'class_code'=>'101',
+                        'seat_num'=>50,
+                        'year'=>2000]);
+
+function insert($table,$cols){
+global $pdo;
+
+$keys= array_keys($cols);
+// dd(join("','",$keys));
+
+$sql="insert into $table (`" . join("`,`",$keys) . "`) values('" . join("','",$cols) ."')";
+
+echo $sql;
+return $pdo->exec($sql);
+}
 
 function update($table,$col,...$args){
   global $pdo;
@@ -52,7 +71,7 @@ function update($table,$col,...$args){
         $sql=$sql . " where `id`='{$args[0]}'";
     }
   }
-  
+
   echo $sql;
   return $pdo->exec($sql);
 }
@@ -70,12 +89,6 @@ function find($table,$id){
     $sql=$sql . " where `id`='$id'";
   }
   return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-}
-
-function dd($array){
-  echo "<pre>";
-  print_r($array);
-  echo "</pre>";
 }
 
 function all($table,...$args){
@@ -101,6 +114,12 @@ function all($table,...$args){
 
   // echo $sql;
   return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function dd($array){
+  echo "<pre>";
+  print_r($array);
+  echo "</pre>";
 }
 
 ?>
