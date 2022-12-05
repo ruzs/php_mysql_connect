@@ -23,7 +23,7 @@ if(isset($_GET['id'])){
         <div class="form-group row col-11">
             <label class="col-2 text-right">項目<?=$idx+1?></label>
             <input type="text" name='opt[]'value="<?=$option['opt']?>" class="form-control col-10">
-            <input type="hidden" name="subject_id" value="<?=$subject['id']?>">
+            <input type="hidden" name="opt_id[]" value="<?=$option['id'];?>">
         </div>      
     <?php
     }
