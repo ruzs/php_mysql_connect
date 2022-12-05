@@ -19,7 +19,11 @@
         <div class="col-7 font-weight-bolder" style="font-size:1.25rem"> <?=$survey['subject'];?></div>
         <div class="col-2 text-center">0</div>
         <div class="col-3 text-center">
-            <a href="./api/survey_active.php?id=<?=$survey['id'];?>" class="btn btn-sm btn-secondary mx-1">啟用</a>
+        <?php
+                $activeBg=($survey['active']==1)?"btn-primary":"btn-secondary";
+                $activeText=($survey['active']==1)?"啟用":"關閉";
+            ?>
+            <a href="./api/survey_active.php?id=<?=$survey['id'];?>" class="btn btn-sm <?=$activeBg;?> mx-1"><?=$activeText;?></a>
             <a href="admin_center.php?do=survey_edit&id=<?=$survey['id'];?>" class="btn btn-sm btn-success mx-1">編輯</a>
             <a href="./api/survey_del.php?id=<?=$survey['id'];?>" class="btn btn-sm btn-info mx-1">刪除</a>
         </div>
