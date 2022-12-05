@@ -8,7 +8,7 @@
     <!--選項區-->
         <div class="form-group row col-11">
             <label class="col-2 text-right">項目１</label>
-            <input type="text" name="subject" class="form-control col-10">
+            <input type="text" name="opt[]" class="form-control col-10">
         </div>    
         <div class="form-group row col-11">
             <label class="col-2 text-right">項目２</label>

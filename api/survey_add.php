@@ -26,5 +26,5 @@ if(isset($_POST['opt'])){
   }
 }
 //insert('survey_options');
-header("location:../admin_center.php?do=survey")
+header("location:../admin_center.php?do=survey");
 ?>
