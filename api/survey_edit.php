@@ -21,6 +21,18 @@ foreach($_POST['opt_id'] as $idx => $id){
   update('survey_options',['opt'=>$_POST['opt'][$idx]],$id);
 }
 
+if(isset($_POST['optn'])){
+  // dd($_POST['optn']);
+   foreach($_POST['optn'] as $option){
+       if($option!=''){
+           $tmp=['opt'=>$option,
+                 'subject_id'=>$_POST['subject_id'],
+                 'vote'=>0];
+           dd($tmp);
+           insert('survey_options',$tmp);
+       } 
+   }
+}
 
 header("location:../admin_center.php?do=survey");
 ?>
