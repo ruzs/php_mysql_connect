@@ -1,4 +1,10 @@
-<h3 class="text-center font-weight-bold">Lorem ipsum dolor sit</h3>
+<?php
+$surveys=all("survey_subject",['active'=>1]);
+foreach($surveys as $survey){
+
+}
+?>
+<h3 class="text-center font-weight-bold"><?=$survey['subject'];?></h3>
 
 <form action="./api/survey_vote.php">
 <div class="col-8 mx-auto mt-4">
@@ -12,7 +18,7 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </div>
     </div>   
-    <div class="input-group" style="margin-top:-1px">
+    <!-- <div class="input-group" style="margin-top:-1px">
         <div class="input-group-prepend">
             <div class="input-group-text">
                 <input type="radio" name="option">
@@ -21,7 +27,7 @@
         <div class="form-control">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </div>
-    </div>   
+    </div>    -->
 </div>
 <div class="text-center mt-4">
     <input type="submit" class="btn btn-primary mx-1" value="投票">
