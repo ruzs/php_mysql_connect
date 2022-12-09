@@ -161,4 +161,7 @@ function q($sql){
   //echo $sql;
   return $pdo->query($sql)->fetchAll();
 }
+function to($location){
+    header("location:$location");
+}
 ?>
