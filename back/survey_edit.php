@@ -39,7 +39,7 @@ if(isset($_GET['id'])){
             <!-- <input class="btn btn-primary mx-1" type="submit" value="修改"> -->
         <input class="btn btn-primary mx-1" type="submit" value="修改">
         <input class="btn btn-warning mx-1" type="reset" value="重置">
-        <a href="/school/admin_center.php?do=survey" class="btn btn-success mx-1">返回</a>
+        <a href="../school/admin_center.php?do=survey" class="btn btn-success mx-1">返回</a>
     </div>
 </form>
 

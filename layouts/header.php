@@ -4,7 +4,9 @@
         <?php //print_r($_SERVER);?>
         <!-- </pre> -->
         <?php
-        $local=str_replace(['/','school','.php'],'',$_SERVER['PHP_SELF']) ;
+        $file_str=explode("/",$_SERVER['PHP_SELF']);
+        $local=str_replace('.php','',array_pop($file_str)) ;
+        // $local=str_replace(['/','school','.php'],'',$_SERVER['PHP_SELF']) ;
         switch($local){
                 case "index":
                     echo "<div>";

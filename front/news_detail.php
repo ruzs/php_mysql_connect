@@ -8,4 +8,5 @@ $news=$pdo->query($sql)->fetch();
     發佈時間：<?=$news['created_at'];?>
 </div>
 <div class="text-left">[<?=$news['type'];?>]</div>
-<div style='font-size:1.2rem'><?=nl2br($news['content']);?></div>
+<div style='font-size:1.2rem'><?=nl2br($news['content']);?></div><br>
+<a href="../school/index.php" class="btn btn-warning mx-1">返回</a><br><br>
